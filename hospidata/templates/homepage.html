@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body onload="getLocation()">
+
+<!-- <p id="demo" style="font-size:10px">We want to use your location data. Please keep it enabled</p> -->
+
+<!-- <p style="font-size:10px" id="demo"></p> -->
+<center>
+<h2>MyGov Hospital Speacilty data</h2>
+
+
+<p>Search the required hospital facility</p>
+<form action="searchresult/" method="POST">
+{% csrf_token %}
+<input type="text" name="speciality" >
+<input type=hidden name="latlong" id="demo">
+<input type=hidden name=longitude value="c2415-345-8563">
+<input type="submit" value="Submit">
+</form>
+
+</center>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.value = "Latitude: " + position.coords.latitude +
+    " | Longitude: " + position.coords.longitude;
+}
+
+
+</script>
+</body>
+</html>
