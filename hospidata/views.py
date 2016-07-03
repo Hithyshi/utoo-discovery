@@ -17,20 +17,20 @@ def home(request):
 def searchresult(request):
 #    mydata=request.POST['speciality']
     mylat=request.POST['latlong']
-    print mylat
+    print (mylat)
 #    print mydata + " " + mylat
 #    print "YEEEEEEEESSSSSS"
 
     R = 6373.0
     lats = re.findall(r'Latitude: (..\...)*', mylat)
     longs = re.findall(r'.*Longitude: (..\...)*', mylat)
-    print float(lats[0])
-    print float(longs[0])
+    print (float(lats[0]))
+    print (float(longs[0]))
     lat1 = radians(float(lats[0]))
     lon1 = radians(float(longs[0]))
     CSV_URL = 'https://data.gov.in/node/356921/datastore/export/csv'
     search_speciality = request.POST['speciality']
-    print search_speciality
+    print (search_speciality)
     speciality_str=search_speciality[0].upper()+search_speciality[1:].lower()
     result_list=list()
     with requests.Session() as s:
@@ -52,7 +52,7 @@ def searchresult(request):
                         result_list.append((row[1],row[2],row[10],row[19],row[5],distance))
                     break
     for res in sorted(result_list, key=lambda x: x[5]):
-        print res
+        print (res)
     return render_to_response("resultpage.html",{"mydata":mydata, "mylat":mylat},context_instance=RequestContext(request))
 
 
