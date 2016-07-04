@@ -5,6 +5,10 @@
 <body>
 
 <p>Hello</p><br>
-<p>{{ search_speciality }}</p>
+
+{% for result in res_list %}
+    {{ result }}
+{% endfor %}
+
 </body>
 </html>

@@ -20,7 +20,7 @@ def searchresult(request):
     print (mylat)
 #    print mydata + " " + mylat
 #    print "YEEEEEEEESSSSSS"
-
+    res_list=[]
     R = 6373.0
     lats = re.findall(r'Latitude: (..\...)*', mylat)
     longs = re.findall(r'.*Longitude: (..\...)*', mylat)
@@ -52,7 +52,7 @@ def searchresult(request):
                         result_list.append((row[1],row[2],row[10],row[19],row[5],distance))
                     break
     for res in sorted(result_list, key=lambda x: x[5]):
-        print (res)
-    return render_to_response("resultpage.html",{"search_speciality":search_speciality},context_instance=RequestContext(request))
+        res_list.append(res)
+    return render_to_response("resultpage.html",{"res_list":res_list},context_instance=RequestContext(request))
 
 
