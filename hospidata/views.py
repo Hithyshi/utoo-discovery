@@ -53,6 +53,6 @@ def searchresult(request):
                     break
     for res in sorted(result_list, key=lambda x: x[5]):
         print (res)
-    return render_to_response("resultpage.html",{"mydata":mydata, "mylat":mylat},context_instance=RequestContext(request))
+    return render_to_response("resultpage.html",{"search_speciality":search_speciality},context_instance=RequestContext(request))
 
 
