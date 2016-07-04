@@ -11,7 +11,8 @@ from math import sin, cos, sqrt, atan2, radians
 
 
 def home(request):
-    return render_to_response("homepage.html",context_instance=RequestContext(request))
+    res_list=[]
+    return render_to_response("homepage.html",{"res_list":res_list},context_instance=RequestContext(request))
 
 
 def searchresult(request):
@@ -53,6 +54,6 @@ def searchresult(request):
                     break
     for res in sorted(result_list, key=lambda x: x[5]):
         res_list.append(res)
-    return render_to_response("resultpage.html",{"res_list":res_list},context_instance=RequestContext(request))
+    return render_to_response("homepage.html",{"res_list":res_list},context_instance=RequestContext(request))
 
 
