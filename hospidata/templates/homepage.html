@@ -2,6 +2,8 @@
 <html>
 <head>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+
 </head>
 <body onload="getLocation()">
 
@@ -15,10 +17,11 @@
 <p>Search the required hospital facility</p>
 <form action="searchresult/" method="POST">
 {% csrf_token %}
-<input type="text" name="speciality" >
+<input type="text" name="speciality" required>
 <input type=hidden name="latlong" id="demo">
-<input type=hidden name=longitude value="c2415-345-8563">
+<!-- <input type=hidden name=longitude value="c2415-345-8563"> -->
 <input type="submit" value="Submit">
+<!-- <input type="button" onclick="runMyFunction()" value="Submit"> -->
 </form>
 
 
@@ -47,5 +50,7 @@ function showPosition(position) {
 
 
 </script>
+
+
 </body>
 </html>
